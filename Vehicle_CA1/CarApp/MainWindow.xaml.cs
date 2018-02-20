@@ -21,6 +21,7 @@ namespace CarApp
     public partial class MainWindow : Window
     {
         public enum category {all, car , bikes, vans};
+        List<Vehicle> vehicles = new List<Vehicle>();
 
         public MainWindow()
         {
