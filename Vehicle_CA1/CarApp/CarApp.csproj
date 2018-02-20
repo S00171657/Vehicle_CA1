@@ -102,6 +102,21 @@
     <Resource Include="Assets\Images\motorbike.png" />
     <Resource Include="Assets\Images\van.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Vehicles\Cars\astra.png" />
+    <Resource Include="Assets\Vehicles\Cars\challenger.png" />
+    <Resource Include="Assets\Vehicles\Cars\skyline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Vehicles\Vans\express.png" />
+    <Resource Include="Assets\Vehicles\Vans\partner.png" />
+    <Resource Include="Assets\Vehicles\Vans\sprinter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Vehicles\Bikes\fatboy.png" />
+    <Resource Include="Assets\Vehicles\Bikes\gsx-r125.png" />
+    <Resource Include="Assets\Vehicles\Bikes\patagonia_rider.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

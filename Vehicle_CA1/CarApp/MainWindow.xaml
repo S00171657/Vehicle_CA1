@@ -25,7 +25,7 @@
         <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="5" CornerRadius="5" Margin="2"/>
 
         <Image Source="/Assets/Images/all.png" HorizontalAlignment="Left" Margin="10"/>
-        <RadioButton Name="radAll" HorizontalAlignment="Center" VerticalAlignment="Center" Content="All" FontSize="17"/>
+        <RadioButton Name="radAll" HorizontalAlignment="Center" VerticalAlignment="Center" Content="All" FontSize="17" IsChecked="True"/>
 
         <Image Source="/Assets/Images/car.png" HorizontalAlignment="Left" Margin="10" Grid.Column="1"/>
         <RadioButton Name="radCar" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Cars" FontSize="17" Grid.Column="1"/>
@@ -38,7 +38,7 @@
 
         <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="60,0,30,0">
             <Label Width="50" HorizontalAlignment="Left">Sort By</Label>
-            <ComboBox Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <ComboBox Name="comboBox" Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top"/>
         </StackPanel>
 
         <ListBox Name="lstVehicle" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="20,0,0,30"/>

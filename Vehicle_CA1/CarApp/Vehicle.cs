@@ -15,6 +15,7 @@ namespace CarApp
         public int Mileage { get; set; }
         public string Desc { get; set; }
         public double Engine { get; set; }
+        public string Image { get; set; }
     }
     class Car : Vehicle
     {
@@ -23,7 +24,7 @@ namespace CarApp
         {
 
         }
-        public Car(string make, string model, double price, int year, int mileage, string desc, double engine)
+        public Car(string make, string model, double price, int year, int mileage, string desc, double engine, string image)
         {
             Make = make;
             Model = model;
@@ -32,8 +33,15 @@ namespace CarApp
             Mileage = mileage;
             Desc = desc;
             Engine = engine;
+            Image = image;
         }
         #endregion
+
+        public override string ToString()
+        {
+            string output = this.GetType().Name +" - " + "Make: " + Make + " - " + "Model: " + Model;
+            return output;
+        }
     }
     class Bike : Vehicle
     {
@@ -42,7 +50,7 @@ namespace CarApp
         {
 
         }
-        public Bike(string make, string model, double price, int year, int mileage, string desc, double engine)
+        public Bike(string make, string model, double price, int year, int mileage, string desc, double engine, string image)
         {
             Make = make;
             Model = model;
@@ -51,8 +59,15 @@ namespace CarApp
             Mileage = mileage;
             Desc = desc;
             Engine = engine;
+            Image = image;
         }
         #endregion
+
+        public override string ToString()
+        {
+            string output = this.GetType().Name + " - " + "Make: " + Make + " - " + "Model: " + Model;
+            return output;
+        }
     }
     class Van : Vehicle
     {
@@ -61,7 +76,7 @@ namespace CarApp
         {
 
         }
-        public Van(string make, string model, double price, int year, int mileage, string desc, double engine)
+        public Van(string make, string model, double price, int year, int mileage, string desc, double engine, string image)
         {
             Make = make;
             Model = model;
@@ -70,7 +85,14 @@ namespace CarApp
             Mileage = mileage;
             Desc = desc;
             Engine = engine;
+            Image = image;
         }
         #endregion
+
+        public override string ToString()
+        {
+            string output = this.GetType().Name + " - " + "Make: " + Make + " - " + "Model: " + Model;
+            return output;
+        }
     }
 }
