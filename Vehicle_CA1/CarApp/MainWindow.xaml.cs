@@ -24,7 +24,8 @@ namespace CarApp
         public enum sort { any, model, make, year, mileage, engine}
         //Making lists for all vehicles and a filtered list
         List<Vehicle> vehicles = new List<Vehicle>();
-        List<Vehicle> filtered = new List<Vehicle>();
+        
+
 
         public MainWindow()
         {
@@ -137,5 +138,58 @@ namespace CarApp
                 lstVehicle.ItemsSource = vehicles;
             }
         }
+
+        private void lstVehicle_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Vehicle selectedVehicle = lstVehicle.SelectedItem as Vehicle;
+
+            if (selectedVehicle != null)
+            {
+                lblMake.Content = selectedVehicle.Make;
+                lblModel.Content = selectedVehicle.Model;
+                lblPrice.Content = selectedVehicle.Price;
+                lblYear.Content = selectedVehicle.Year;
+                lblMileage.Content = selectedVehicle.Mileage;
+                lblDesc.Content = selectedVehicle.Desc;
+                lblEngine.Content = selectedVehicle.Engine + " litre";
+
+                Uri imageUri = new Uri(selectedVehicle.Image, UriKind.Relative);
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
+                Image myImage = new Image();
+                img.Source = imageBitmap;
+            }
+        }
+
+        private void radCar_Checked(object sender, RoutedEventArgs e)
+        {
+            List<Vehicle> carList = new List<Vehicle>();
+
+            foreach (Vehicle vehicle in vehicles)
+            {
+                if(vehicle.GetType().Name == "Car")
+                {
+                    carList.Add(vehicle);
+                }
+            }
+
+            lstVehicle.ItemsSource = carList;
+        }
+
+        private void radAll_Checked(object sender, RoutedEventArgs e)
+        {
+            List<Vehicle> vehicleList = new List<Vehicle>();
+
+            foreach (Vehicle vehicle in vehicles)
+            {
+               
+                vehicleList.Add(vehicle);
+      
+            }
+            if (vehicleList != null)
+            {
+                lstVehicle.ItemsSource = vehicleList;
+            }
+        }
     }
+    
 }
