@@ -24,21 +24,21 @@
 
         <Border Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="5" CornerRadius="5" Margin="2"/>
 
-        <Image Source="/Assets/Images/all.png" HorizontalAlignment="Left" Margin="10"/>
-        <RadioButton Name="radAll" HorizontalAlignment="Center" VerticalAlignment="Center" Content="All" FontSize="17" IsChecked="True" Checked="radAll_Checked"/>
+        <Image Source="/Assets/Images/all.png" HorizontalAlignment="Left" Margin="20"/>
+        <RadioButton Name="radAll" HorizontalAlignment="Center" VerticalAlignment="Center" Content="All" FontSize="17" Checked="radAll_Checked"/>
 
-        <Image Source="/Assets/Images/car.png" HorizontalAlignment="Left" Margin="10" Grid.Column="1"/>
+        <Image Source="/Assets/Images/car.png" HorizontalAlignment="Left" Margin="20" Grid.Column="1"/>
         <RadioButton Name="radCar" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Cars" FontSize="17" Grid.Column="1" Checked="radCar_Checked"/>
 
-        <Image Source="/Assets/Images/motorbike.png" HorizontalAlignment="Left" Margin="10" Grid.Column="2"/>
-        <RadioButton Name="radBike" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Bikes" FontSize="17" Grid.Column="2"/>
+        <Image Source="/Assets/Images/motorbike.png" HorizontalAlignment="Left" Margin="20" Grid.Column="2"/>
+        <RadioButton Name="radBike" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Bikes" FontSize="17" Grid.Column="2" Checked="radBike_Checked"/>
 
-        <Image Source="/Assets/Images/van.png" HorizontalAlignment="Left" Margin="10" Grid.Column="3"/>
-        <RadioButton Name="radVan" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Vans" FontSize="17" Grid.Column="3"/>
+        <Image Source="/Assets/Images/van.png" HorizontalAlignment="Left" Margin="20" Grid.Column="3"/>
+        <RadioButton Name="radVan" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Vans" FontSize="17" Grid.Column="3" Checked="radVan_Checked"/>
 
         <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="60,0,30,0">
             <Label Width="50" HorizontalAlignment="Left">Sort By</Label>
-            <ComboBox Name="comboBox" Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <ComboBox Name="comboBox" Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top" SelectionChanged="comboBox_SelectionChanged"/>
         </StackPanel>
 
         <ListBox Name="lstVehicle" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="20,0,0,30" SelectionChanged="lstVehicle_SelectionChanged"/>
@@ -57,7 +57,7 @@
             <Label Content="Engine:" HorizontalAlignment="Left"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="1" Height="145" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="60,100,15,39">
+        <StackPanel Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,82,0,0">
             <Label Name="lblMake" HorizontalAlignment="Left"/>
             <Label Name="lblModel" HorizontalAlignment="Left"/>
             <Label Name="lblPrice" HorizontalAlignment="Left"/>
@@ -71,6 +71,6 @@
         <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Name="btnSave" Content="Save" Height="25" Width="100" Margin="10,0,0,0"/>
         <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Name="btnAdd" Content="Add" Height="25" Width="100" Margin="0,0,0,0"/>
         <Button Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Name="btnEdit" Content="Edit" Height="25" Width="100" Margin="0,0,10,0"/>
-        <Button Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Name="btnDelete" Content="Add" Height="25" Width="100" Margin="0,0,0,0"/>
+        <Button Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Name="btnDelete" Content="Delete" Height="25" Width="100" Margin="0,0,0,0" Click="btnDelete_Click"/>
     </Grid>
 </Window>

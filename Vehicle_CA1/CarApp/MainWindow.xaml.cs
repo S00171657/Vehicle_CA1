@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,8 @@ namespace CarApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public enum category {all, car , bikes, vans};
-        public enum sort { any, model, make, year, mileage, engine}
         //Making lists for all vehicles and a filtered list
-        List<Vehicle> vehicles = new List<Vehicle>();
-        
-
+        ObservableCollection<Vehicle> vehicles = new ObservableCollection<Vehicle>();
 
         public MainWindow()
         {
@@ -36,20 +33,16 @@ namespace CarApp
         {
             #region Combox Setup
             //adding all the combobox items
-            comboBox.Items.Add("Any");
-            comboBox.Items.Add("Model");
             comboBox.Items.Add("Make");
-            comboBox.Items.Add("Year");
             comboBox.Items.Add("Mileage");
-            comboBox.Items.Add("Engine");
-            comboBox.SelectedIndex = 0;
+            comboBox.Items.Add("Price");
             #endregion
 
             #region Vehicles
             Car c1 = new Car("Opel",
-                "Astra", 
+                "Astra",
                 7500, 2010, 50000,
-                "Nice car. NCT done last month.", 
+                "Nice car. NCT done last month.",
                 1.6,
                 "/Assets/Vehicles/Cars/astra.png");
 
@@ -131,14 +124,99 @@ namespace CarApp
             #endregion
 
         }
-        public void Category()
+
+        #region Radio Buttons
+        private void radCar_Checked(object sender, RoutedEventArgs e)
         {
-            if(radAll.IsChecked == true)
+            List<Vehicle> carList = new List<Vehicle>();
+
+            foreach (Vehicle vehicle in vehicles)
             {
-                lstVehicle.ItemsSource = vehicles;
+                if (vehicle.GetType().Name == "Car")
+                {
+                    carList.Add(vehicle);
+                }
             }
+
+            lstVehicle.ItemsSource = carList;
         }
 
+        private void radAll_Checked(object sender, RoutedEventArgs e)
+        {
+            List<Vehicle> vehicleList = new List<Vehicle>();
+
+            lstVehicle.ItemsSource = vehicles;
+
+        }
+
+        private void radBike_Checked(object sender, RoutedEventArgs e)
+        {
+            List<Vehicle> bikeList = new List<Vehicle>();
+
+            foreach (Vehicle vehicle in vehicles)
+            {
+                if (vehicle.GetType().Name == "Bike")
+                {
+                    bikeList.Add(vehicle);
+                }
+            }
+
+            lstVehicle.ItemsSource = bikeList;
+        }
+
+        private void radVan_Checked(object sender, RoutedEventArgs e)
+        {
+            List<Vehicle> vanList = new List<Vehicle>();
+
+            foreach (Vehicle vehicle in vehicles)
+            {
+                if (vehicle.GetType().Name == "Van")
+                {
+                    vanList.Add(vehicle);
+                }
+            }
+
+            lstVehicle.ItemsSource = vanList;
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Vehicle selectedVehicle = lstVehicle.SelectedItem as Vehicle;
+            if (selectedVehicle != null)
+            {
+                vehicles.Remove(selectedVehicle);
+
+                lblMake.Content = "";
+                lblModel.Content = "";
+                lblPrice.Content = "";
+                lblYear.Content = "";
+                lblMileage.Content = "";
+                lblDesc.Content = "";
+                lblEngine.Content = "";
+                img.Source = null;
+            }
+        }
+        #endregion
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<Vehicle> sortedList;
+
+            if (comboBox.SelectedIndex == 0)
+            {
+                sortedList = vehicles.OrderBy(o => o.Make).ToList();
+                lstVehicle.ItemsSource = sortedList;
+            }
+            else if (comboBox.SelectedIndex == 1)
+            {
+                sortedList = vehicles.OrderBy(o => o.Mileage).ToList();
+                lstVehicle.ItemsSource = sortedList;
+            }
+            else if (comboBox.SelectedIndex == 2)
+            {
+                sortedList = vehicles.OrderBy(o => o.Price).ToList();
+                lstVehicle.ItemsSource = sortedList;
+            }
+        }
         private void lstVehicle_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Vehicle selectedVehicle = lstVehicle.SelectedItem as Vehicle;
@@ -159,37 +237,6 @@ namespace CarApp
                 img.Source = imageBitmap;
             }
         }
-
-        private void radCar_Checked(object sender, RoutedEventArgs e)
-        {
-            List<Vehicle> carList = new List<Vehicle>();
-
-            foreach (Vehicle vehicle in vehicles)
-            {
-                if(vehicle.GetType().Name == "Car")
-                {
-                    carList.Add(vehicle);
-                }
-            }
-
-            lstVehicle.ItemsSource = carList;
-        }
-
-        private void radAll_Checked(object sender, RoutedEventArgs e)
-        {
-            List<Vehicle> vehicleList = new List<Vehicle>();
-
-            foreach (Vehicle vehicle in vehicles)
-            {
-               
-                vehicleList.Add(vehicle);
-      
-            }
-            if (vehicleList != null)
-            {
-                lstVehicle.ItemsSource = vehicleList;
-            }
-        }
     }
-    
+
 }
